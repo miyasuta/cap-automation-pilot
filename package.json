@@ -1,0 +1,40 @@
+{
+  "name": "cap-automation-pilot",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.16.0",
+    "@sap-cloud-sdk/http-client": "^3.16.0",
+    "@sap-cloud-sdk/resilience": "^3.16.0",
+    "@sap/cds": "^8",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": ">=7"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build": "mbt build -t gen --mtar mta.tar",
+    "deploy": "cf deploy gen/mta.tar"
+  },
+  "cds": {
+    "requires": {
+      "auth": "mocked",
+      "Executions": {
+        "kind": "rest",
+        "model": "srv/external/ExecutionsAPI",
+        "path": "/api/v1",
+        "[production]": {
+          "credentials": {
+            "destination": "automationPilot"
+          }
+        }
+      }
+    }
+  }
+}

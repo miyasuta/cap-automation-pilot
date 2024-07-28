@@ -1,0 +1,6 @@
+@server = http://localhost:4004
+@auth = Authorization: Basic alice:
+
+
+###
+GET {{server}}/odata/v4/automation-pilot/getExecutions()

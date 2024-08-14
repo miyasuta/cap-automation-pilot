@@ -10,7 +10,8 @@
     "@sap-cloud-sdk/http-client": "^3.16.0",
     "@sap-cloud-sdk/resilience": "^3.16.0",
     "@sap/cds": "^8",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.6",
@@ -27,11 +28,14 @@
       "auth": "mocked",
       "Executions": {
         "kind": "rest",
-        "model": "srv/external/ExecutionsAPI",
-        "path": "/api/v1",
+        "credentials": {
+          "destination": "automationPilot",
+          "path": "/api/v1"
+        },
         "[production]": {
           "credentials": {
-            "destination": "automationPilot"
+            "destination": "automationPilot",
+            "path": "/api/v1"
           }
         }
       }

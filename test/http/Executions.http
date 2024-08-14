@@ -1,6 +1,15 @@
 @server = http://localhost:4004
+# @server=9fcf6fb2trial-automation-pilot-d1e6076692c34104ef150fb3-6bf4c93.cfapps.ap21.hana.ondemand.com
 @auth = Authorization: Basic alice:
 
 
 ###
 GET {{server}}/odata/v4/automation-pilot/getExecutions()
+
+###
+POST {{server}}/odata/v4/automation-pilot/triggerCommand
+Content-Type: application/json
+
+{
+    "commandId": "welcome-T001565R7:AdvancedInputTransformer:1"
+}
